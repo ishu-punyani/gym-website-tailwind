@@ -2,29 +2,48 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about-us", label: "About us" },
+  { href: "/contact-us", label: "Contact Us" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/products", label: "Products" },
+]
+
 const Header = () => {
   return (
-    <div className="fixed w-full flex justify-between bg-yellow-300 border-b-4 border-blue-400 py-2 px-6">
-      <div className="flex items-center justify-center">
-        <Link href={"/"}>
+    <header className="fixed w-full bg-yellow-300 border-b-4 border-blue-400 shadow-md z-50">
+      <div className="container px-6 py-3 flex items-center justify-between">
+        <Link href="/" className="flex items-center">
           <Image
-            src={"/gym-logo.webp"}
-            width={70}
-            height={70}
+            src="/gym-logo.webp"
+            width={60}
+            height={60}
             alt="Gym Logo"
             className="rounded-full"
           />
         </Link>
+
+        <nav className="flex space-x-6 items-center text-lg">
+          {navItems?.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="transition-colors duration-300 hover:text-blue-700 hover:underline"
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          <Link
+            href="/contact-us"
+            className="bg-amber-600 hover:bg-amber-700 transition-colors duration-300 text-white font-semibold px-4 py-2 rounded-full"
+          >
+            Free Trial
+          </Link>
+        </nav>
       </div>
-      <div className="flex py-3 justify-between">
-        <Link
-          href={"/contact"}
-          className="bg-amber-600 font-bold text-2xl px-4 cursor-pointer py-2 rounded-full self-center"
-        >
-          Free Trial
-        </Link>
-      </div>
-    </div>
+    </header>
   );
 };
 
