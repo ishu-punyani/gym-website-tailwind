@@ -16,7 +16,7 @@ const Header = () => {
       <div className="container px-6 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center">
           <Image
-            src="/gym-logo.webp"
+            src="/svg-icons/gym-logo.webp"
             width={60}
             height={60}
             alt="Gym Logo"
@@ -29,7 +29,7 @@ const Header = () => {
             <Link
               key={link.href}
               href={link.href}
-              className="transition-colors duration-300 hover:text-blue-700 hover:underline"
+              className="transition-colors duration-300 hover:underline"
             >
               {link.label}
             </Link>
